@@ -42,7 +42,6 @@ namespace LibraryProject.Controllers
         }
         [HttpGet]
         [Route("book/{name}")]
-        [HttpPost]
         public async Task<ActionResult<List<Book>>> GetByName([FromServices] DataContext context, string name)
         {
             var book = await context.Books.Where(x => name == null ?
@@ -53,6 +52,7 @@ namespace LibraryProject.Controllers
             .ToListAsync();
             return book;
         }
+        [HttpPost]
         [Route("")]
         public async Task<ActionResult<Book>> Post(
             [FromServices] DataContext context,
